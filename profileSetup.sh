@@ -19,3 +19,5 @@ else
    cp ~/profile/.zshrc ~
    cp ~/profile/thesalarian.zsh-theme ~/.oh-my-zsh/themes/
 fi
+
+zsh
