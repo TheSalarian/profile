@@ -1,0 +1,4 @@
+set tabstospaces
+set tabsize 3
+set autoindent
+set linenumbers
