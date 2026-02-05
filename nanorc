@@ -1,3 +1,5 @@
+include "/usr/share/nano/*.nanorc"
+
 set tabstospaces
 set tabsize 3
 set autoindent
