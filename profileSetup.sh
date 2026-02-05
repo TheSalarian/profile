@@ -14,10 +14,12 @@ Options:
 "
 
 main() {
-   
+
+   if [[ $# == 0 ]]; then echo "$usage"; exit 0; fi
+
    while getopts "ahnopu" flag; do
       case $flag in
-         h) echo "$usage"; exit ;; # Display help
+         h) echo "$usage"; exit 0;; # Display help
          u) updateSystem ;;    # Run system updates
          p) installPackages ;; # Install packages
          o) installOMZ ;;      # Install Oh My ZSH
@@ -38,11 +40,11 @@ main() {
 }
 
 updateSystem() {
-   
+
    if [ -e /bin/pacman ]
    then
       sudo pacman -Syu
-   else 
+   else
       sudo apt-get update
       sudo apt-get upgrade
    fi
