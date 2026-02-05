@@ -66,17 +66,17 @@ installOMZ() {
 
    if [ ! -d ~/.oh-my-zsh/ ]
    then
-      cp ./zshrc ~/.zshrc
+      cp ./components/zshrc ~/.zshrc
 
       # --unattended: prevents install script from using chsh or switching immediately to zsh, which stops the rest of this script from running.
       # --keep-zsh: prevents overwriting of .zshrc with the default version.
       sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 
-      cp ./thesalarian.zsh-theme ~/.oh-my-zsh/themes/
+      cp ./components/thesalarian.zsh-theme ~/.oh-my-zsh/themes/
 
    else
-      cp ./zshrc ~/.zshrc
-      cp ./thesalarian.zsh-theme ~/.oh-my-zsh/themes/
+      cp ./components/zshrc ~/.zshrc
+      cp ./components/thesalarian.zsh-theme ~/.oh-my-zsh/themes/
    fi
 
    chsh -s /bin/zsh
@@ -87,7 +87,7 @@ configureNano() {
 
    if [ ! -e /usr/bin/nano ]; then installPackages; fi
 
-   cp ./nanorc ~/.nanorc
+   cp ./components/nanorc ~/.nanorc
 
 }
 
