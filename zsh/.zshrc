@@ -94,6 +94,10 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
+# Enables Bash-style movement between words
+autoload -U select-word-style
+select-word-style bash
+
 # Enable zsh-suggestions (https://github.com/zsh-users/zsh-autosuggestions)
 source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
