@@ -1,0 +1,11 @@
+include "/usr/share/nano/*.nanorc"
+
+set autoindent
+set indicator
+set linenumbers
+set tabsize 3
+set zap
+
+# Press Alt+Bracket to move line up or down
+bind M-[ "{cut}{up}{paste}{up}" main
+bind M-] "{cut}{down}{paste}{up}" main
