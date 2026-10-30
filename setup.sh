@@ -1,6 +1,6 @@
 #!/bin/sh
 
-script_location=$(find "/home/$USERNAME" -type f -iname "setup.sh")
+script_location=$(find "$HOME" -type f -iname "setup.sh")
 working_dir=$(dirname -- $script_location)
 
 if [ ! -d ~/.config/ ]; then mkdir -p ~/.config/; fi
