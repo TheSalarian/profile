@@ -5,21 +5,24 @@ echo "Script location: $script_location"
 working_dir=$(dirname -- $script_location)
 echo "Working directory: $working_dir\n"
 
+# Basic error handling
+
 if [ $(find ~ -iname "setup.sh" | wc -l) -gt 1 ]; then
 	echo "Multiple setup.sh scripts found. Exiting."
 	return
 fi
 
-return
-if [ $(ls "$working_dir/zsh/zsh-autosuggestions" | wc  -l) -lt 3 ]; then
+if [ $(ls "$working_dir/zsh/zsh-autosuggestions" | wc -l) -lt 3 ]; then
 	echo "Directory \"zsh-autosuggestions\" appears to be empty. \"Git clone\" was likely run without the \"--recurse-submodules\" option. Exiting."
 	return
 fi
 
-if [ $(ls "$working_dir/zsh/zsh-completions" | wc  -l) -lt 3 ]; then
+if [ $(ls "$working_dir/zsh/zsh-completions" | wc -l) -lt 3 ]; then
 	echo "Directory \"zsh-completions\" appears to be empty. \"Git clone\" was likely run without the \"--recurse-submodules\" option. Exiting."
 	return
 fi
+
+# Main script
 
 if [ ! -d ~/.config/ ]; then
 	echo "~/.config/ not found. Creating..."
