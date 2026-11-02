@@ -99,6 +99,7 @@ bindkey "^[[B" down-line-or-beginning-search	# Down
 source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_BUFFER_MAX=20
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 bindkey '^ ' autosuggest-accept
 
 # Adds additional command option completions (https://github.com/zsh-users/zsh-completions)
@@ -129,9 +130,9 @@ bindkey "^[[F"		end-of-line				# End
 bindkey "^[[3~"	delete-char				# Delete
 
 # Options
-setopt correct					# Enable correction of mistyped commmands
-setopt autocd 					# Enables changing directories by name alone, without 'cd'
-setopt inc_append_history	# Enables sharing history between ttys
+setopt correct			# Enable correction of mistyped commmands
+setopt autocd 			# Enables changing directories by name alone, without 'cd'
+setopt share_history	# Enables sharing history between ttys
 
 # Misc
 HISTFILE=$ZDOTDIR/history
