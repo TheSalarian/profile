@@ -71,7 +71,7 @@ function mywget() {
 			return 1
 		fi
 	fi
-	wget2 --recursive --level=10 --tries=5 --no-clobber --no-parent --continue -R "index.html" $1
+	wget2 --recursive --level=10 --tries=5 --no-clobber --no-parent --continue --adjust-extension -R "html" $1
 }
 
 # Enable built-in tab completion
@@ -91,12 +91,8 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
-
-# Enables Bash-style movement between words
-autoload -U select-word-style
-select-word-style bash
+bindkey "^[[A" up-line-or-beginning-search	# Up
+bindkey "^[[B" down-line-or-beginning-search	# Down
 
 # Enable zsh-suggestions (https://github.com/zsh-users/zsh-autosuggestions)
 source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
@@ -120,16 +116,24 @@ alias grep="grep --color=auto"
 alias ls="ls --color -a"
 alias la="ls -l"
 
+# Key bindings
+bindkey "^[[1;5D"	backward-word			# Ctrl + Left arrow
+bindkey "^[[1;5C"	forward-word			# Ctrl + Right arrow
+bindkey "^H"		backward-delete-word	# Ctrl + Backspace
+bindkey "^[[3;5~"	kill-word				# Ctrl + Delete
+bindkey "^[[1~"	beginning-of-line		# Home
+bindkey "^[[H"		beginning-of-line		# Home
+bindkey "^[[4~"	end-of-line				# End
+bindkey "^[[F"		end-of-line				# End
+bindkey "^[[3~"	delete-char				# Delete
+
+# Options
+setopt correct					# Enable correction of mistyped commmands
+setopt autocd 					# Enables changing directories by name alone, without 'cd'
+setopt inc_append_history	# Enables sharing history between ttys
+
 # Misc
 HISTFILE=$ZDOTDIR/history
-
-bindkey "^[[1;5D" backward-word   # Ctrl + Left arrow
-bindkey "^[[1;5C" forward-word    # Ctrl + Right arrow
-bindkey "^H" backward-delete-word # Ctrl + Backspace
-bindkey "^[[3;5~" kill-word       # Ctrl + Delete
-
-setopt correct # Enable correction of mistyped commmands
-setopt autocd # Enables changing directories by name alone, without 'cd'
 
 preexec() { zshrc_start_timer }
 precmd() { zshrc_command_duration }
