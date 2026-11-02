@@ -10,12 +10,13 @@ if [ $(find ~ -iname "setup.sh" | wc -l) -gt 1 ]; then
 	return
 fi
 
-if [ $(ls "$working_dir/zsh/zsh-autosuggestions" | wc  -l) -eq 2 ]; then
+return
+if [ $(ls "$working_dir/zsh/zsh-autosuggestions" | wc  -l) -lt 3 ]; then
 	echo "Directory \"zsh-autosuggestions\" appears to be empty. \"Git clone\" was likely run without the \"--recurse-submodules\" option. Exiting."
 	return
 fi
 
-if [ $(ls "$working_dir/zsh/zsh-completions" | wc  -l) -eq 2 ]; then
+if [ $(ls "$working_dir/zsh/zsh-completions" | wc  -l) -lt 3 ]; then
 	echo "Directory \"zsh-completions\" appears to be empty. \"Git clone\" was likely run without the \"--recurse-submodules\" option. Exiting."
 	return
 fi
