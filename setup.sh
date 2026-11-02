@@ -10,6 +10,11 @@ if [ $(find ~ -iname "setup.sh" | wc -l) -gt 1 ]; then
 	return
 fi
 
+if [ $(ls "$working_dir/zsh/zsh-autosuggestions" | wc  -l) -eq 2 ]; then
+	echo "Directory \"zsh-autosuggestions\" appears to be empty. \"Git clone\" was likely run without the \"--recurse-submodules\" option. Exiting."
+	return
+fi
+
 if [ ! -d ~/.config/ ]; then
 	echo "~/.config/ not found. Creating..."
 	mkdir -p ~/.config/
