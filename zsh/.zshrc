@@ -71,7 +71,8 @@ function mywget() {
 			return 1
 		fi
 	fi
-	wget2 --recursive --level=10 --tries=5 --no-clobber --no-parent --continue --adjust-extension -R "html" $1
+	reject_list="html,php,exe,bin"
+	wget2 --recursive --level=10 --tries=5 --no-clobber --no-parent --continue --adjust-extension -R "$reject_list" $1
 }
 
 # Enable built-in tab completion
